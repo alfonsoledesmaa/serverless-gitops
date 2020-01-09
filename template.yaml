@@ -1,9 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  serverless-gitops
-
-  Sample SAM Template for serverless-gitops
+  REST API used to interact with GitHub and implement a GitOps Solution with AWS Serverless tools.
 
 Globals:
   Function:
@@ -15,15 +13,15 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/
-      Handler: app.lambdaHandler
+      Handler: app.handler
       Events:
-        HelloWorld:
+        Request:
           Type: Api
           Properties:
-            Path: /healt
+            Path: /health
             Method: GET
 
 Outputs:
   RestApi:
-    Description: "API Gateway endpoint URL for Prod stage for  function"
+    Description: "API Gateway endpoint URL for Prod stage for GitOps"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"

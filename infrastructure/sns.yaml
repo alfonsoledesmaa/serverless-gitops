@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  SNS Topic to manage CloudFormation Status updates for GitOps implementation.
+
+Resources:
+  CloudFormationStatusNotifications:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: 'CloudFormationPRStatus'
+      TopicName: 'CloudFormationStatus'
+      Tags:
+        - Key: Project
+          Value: GitOps
+        - Key: User
+          Value: Alfonso
